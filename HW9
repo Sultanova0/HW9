@@ -1,0 +1,8 @@
+import requests
+from bs4 import BeautifulSoup
+url = "https://food.ru/vypechka"  
+response = requests.get(url)
+soup = BeautifulSoup(response.text)
+recipes = soup.find_all("h3")  
+for recipe in recipes:
+    print(recipe.get_text(strip=True))
